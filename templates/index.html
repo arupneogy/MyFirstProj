@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block head %}
+
+
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1>Emp details</h1>
+    {% if task|length < 1 %}
+    <h4>There are no emp.Add them</h4>
+    {% else %}
+    <table>
+        <tr>
+            <th> Emp ID</th>
+            <th>Emp Name</th>
+            <th>Task</th>
+        </tr>
+        {%  for t in task %}    
+            <tr>
+                <td>{{ t.id}}</td>
+                <td>{{ t.ename}}</td>
+                <td>
+                    <a href="/delete/{{t.id}}">Delete</a><br>
+                    <a href="/update/{{t.id}}">Update</a>
+                </td>
+            </tr>
+        {% endfor %}    
+    </table>
+    {% endif %}
+    <form action="/" method="POST">
+        <input type="text" name="ename" id="ename">
+        <input type="submit" value="Add Name">
+    </form>
+</div>
+
+
+{% endblock %}
